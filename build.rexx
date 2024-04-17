@@ -3,8 +3,12 @@
 say 'Rexx Texttools 0.1 started'
 
 chapters = getMarkdownFilenames('../..')
-
-say 'Current working directory is' directory()
+dir = directory()
+say 'Current working directory is' dir
+ird = reverse(dir)
+parse var ird .'/'.'/'title'/'.
+title=reverse(title)
+say 'Publication file is' title
 /*
  * Every chapter is a markdown file. Precompile the changed chapters,
  * make-style
@@ -25,7 +29,7 @@ end
 -- copy the charts for the latex compilation process
 'mkdir -p charts'
 'mkdir -p images'
-'cp ../../standard.tex .'
+'cp ../../'title'.tex .'
 'cp ../../bibliography.bib .'
 'cp ../../structure.tex .'
 'cp ../../hyphenation.tex .'
@@ -42,16 +46,16 @@ end
 -- build the document. at least 2 passes needed for coherence of contents and index
 xelatexrc=1
 do i=1 to 2
-  'xelatex -output-driver="xdvipdfmx -i dvipdfmx-unsafe.cfg -q -E" -shell-esc standard.tex'
+  'xelatex -output-driver="xdvipdfmx -i dvipdfmx-unsafe.cfg -q -E" -shell-esc 'title'.tex'
   xelatexrc=RC
   say 'xelatex return code:' xelatexrc
-  'makeindex standard'
+  'makeindex' title
   say 'makeindex return code:' RC
-    'bibtex8 --wolfgang standard'
+    'bibtex8 --wolfgang' title
   say 'bibtex return code:' RC
 end
 
-'open standard.pdf'
+'open 'title'.pdf'
 exit
 
 preprocessMD: procedure
