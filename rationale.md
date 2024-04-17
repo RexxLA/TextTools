@@ -1,4 +1,4 @@
-# Colophon for the Rexx Standard Document
+# Rationale for the Rexx Text Tools
 
 ## Principles
 
