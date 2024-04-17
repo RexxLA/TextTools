@@ -1,7 +1,10 @@
 /* rexx build the pdf */
 /* normally we are in a tex/book (two level) subdir of the project */
+say 'Rexx Texttools 0.1 started'
+
 chapters = getMarkdownFilenames('../..')
 
+say 'Current working directory is' directory()
 /*
  * Every chapter is a markdown file. Precompile the changed chapters,
  * make-style
@@ -33,11 +36,12 @@ end
 'cp ../../images/*.jpg ./images'
 'cp ../../images/*.jpeg ./images'
 'cp ../../images/*.tiff ./images'
+'cp ../../images/*.svg ./images'
 /* 'cp ../../recursion/\*.svg ./images' */
 
 -- build the document. at least 2 passes needed for coherence of contents and index
 xelatexrc=1
-/* do i=1 to 2 */
+do i=1 to 2
   'xelatex -output-driver="xdvipdfmx -i dvipdfmx-unsafe.cfg -q -E" -shell-esc standard.tex'
   xelatexrc=RC
   say 'xelatex return code:' xelatexrc
@@ -45,7 +49,7 @@ xelatexrc=1
   say 'makeindex return code:' RC
     'bibtex8 --wolfgang standard'
   say 'bibtex return code:' RC
-/* end */
+end
 
 'open standard.pdf'
 exit
