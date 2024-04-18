@@ -150,8 +150,16 @@ do until line=''
   end
   outline=outline||start||ixword'\index{'ixword'} '
   line=subword(rest,2)
-end
+end -- do until
+if pos('footnote',outline) >0 then
+  do
+    footnotepos = pos('footnote', outline)
+    restofsentence = substr(outline,footnotepos)
+    if countstr('}',restofsentence) < 2 then
+      outline = left(outline,footnotepos-1)||changestr('}',restofsentence,'}}')
+  end
 return outline
+
 
 /* replaceMultiIndices
  * replace a <!--index:indexable words--> tag with the indexable words
@@ -183,9 +191,10 @@ do until line=''
     outline=outline||start
     leave
   end
-  outline=outline||start||'\cite{'ixword'}'
+  outline=outline||start||'\cite{'ixword'} '
   line=subword(rest,2)
 end -- do until
+
 if pos('footnote',outline) >0 then
   do
     footnotepos = pos('footnote', outline)
@@ -193,6 +202,7 @@ if pos('footnote',outline) >0 then
     if countstr('}',restofsentence) < 2 then
       outline = left(outline,footnotepos-1)||changestr('}',restofsentence,'}}')
   end
+
 return outline
 
 replaceHyperlink: procedure expose line
