@@ -106,53 +106,22 @@ do while lines(filename)
     line=changestr('\{\#tbl:id\}',line,'')
   end
   ixpos=pos('\%index\%',line)
-  if ixpos>0 then line=replaceIndices()
+  if ixpos>0 then line=replaceIndices(line)
   ixpos=pos('\%indexm\%',line)
   if ixpos>0 then line=replaceMultiIndices()
   ixpos=pos('\%cite\%',line)
-  if ixpos>0 then line=replaceCites()
+  if ixpos>0 then line=replaceCites(line)
   ixpos=pos('\hyperlink',line)
-  if ixpos>0 then line=replaceHyperlink()
+  if ixpos>0 then line=replaceHyperlink(line)
   ixpos=pos('\%includesource',line)
-  if ixpos>0 then line=includelisting()
+  if ixpos>0 then line=includelisting(line)
   call lineout outfile,line
 end
 call lineout outfile /* close the file */
 return
 
 
-includelisting: procedure expose line
-outline=''
-parse var line start '\%includesource='fn'\%'
-parse var line start '\%includesource='fn':'language'\%'
-outline='\lstinputlisting[language='language',label='fn',caption='fn']{'fn'}'
-return outline
 
-/* replaceIndices
- * replace a single <!--index--> tag with the indexable word
- * following the tag; no duplication but only a single index word
- * which is passed through to the .tex file 
- */  
-replaceIndices: procedure expose line
-outline=''
-do until line=''
-  parse var line start '\%index\%' rest
-  ixword=word(rest,1)
-  if ixword='' then do
-    outline=outline||start
-    leave
-  end
-  outline=outline||start||ixword'\index{'ixword'} '
-  line=subword(rest,2)
-end -- do until
-if pos('footnote',outline) >0 then
-  do
-    footnotepos = pos('footnote', outline)
-    restofsentence = substr(outline,footnotepos)
-    if countstr('}',restofsentence) < 2 then
-      outline = left(outline,footnotepos-1)||changestr('}',restofsentence,'}}')
-  end
-return outline
 
 
 /* replaceMultiIndices
@@ -174,43 +143,3 @@ do until line=''
 end
 return outline
 
-replaceCites: procedure expose line
-outline=''
-do until line=''
-  parse var line start '\%cite\%' rest '.'
-  parse var rest '{[}'ixword'{]}'
-  ixword=translate(ixword,'','[]{}')
-  ixword=strip(ixword)
-  if ixword='' then do
-    outline=outline||start
-    leave
-  end
-  outline=outline||start||'\cite{'ixword'} '
-  line=subword(rest,2)
-end -- do until
-
-if pos('footnote',outline) >0 then
-  do
-    footnotepos = pos('footnote', outline)
-    restofsentence = substr(outline,footnotepos)
-    if countstr('}',restofsentence) < 2 then
-      outline = left(outline,footnotepos-1)||changestr('}',restofsentence,'}}')
-  end
-
-return outline
-
-replaceHyperlink: procedure expose line
-outline=''
-parse var line start '\hyperlink{'link'}{'text'}' rest
-outline=start'\hyperlink{'link'}{'text'} on page \pageref{'link'}' rest
-return outline
-
-newer: procedure
-arg origfile genfile
-origfile=lower(origfile)'.md'
-genfile=lower(genfile)'.md'
-ts1 = stream(origfile,'c','QUERY TIMESTAMP')
-ts2 = stream(genfile,'c','QUERY TIMESTAMP')
-if ts2="" then return 1
-if ts1 > ts2 then return 1
-else return 0
