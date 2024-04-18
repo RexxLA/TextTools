@@ -120,12 +120,6 @@ end
 call lineout outfile /* close the file */
 return
 
-eraseFiles: procedure
-parse lower arg filename
-'rm' filename'.md'
-'rm' filename'.texin'
-'rm' filename'.tex'
-return
 
 includelisting: procedure expose line
 outline=''
