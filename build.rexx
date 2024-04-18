@@ -28,42 +28,10 @@ end
 -- exit -- uncomment to debug the preprocessing
 
 call copyassets title
-
--- build the document. at least 2 passes needed for coherence of contents and index
-xelatexrc=1
-do i=1 to 2
-  'xelatex -output-driver="xdvipdfmx -i dvipdfmx-unsafe.cfg -q -E" -shell-esc 'title'.tex'
-  xelatexrc=RC
-  say 'xelatex return code:' xelatexrc
-  'makeindex' title
-  say 'makeindex return code:' RC
-    'bibtex8 --wolfgang' title
-  say 'bibtex return code:' RC
-end
+call builddocument title
 
 'open 'title'.pdf'
 exit
-
-preprocessMD: procedure
-parse lower arg filename
-outfile=filename
- filename='../../'filename
-call lineout outfile,'<!--preprocessed md-->',1
-do while lines(filename)
-  line=linein(filename)
-  line=changestr('<!--index-->',line,'%index%')
-  line=changestr('<!--index:',line,'%indexm%')
-  line=changestr('<!--cite-->',line,'%cite%')
-  if left(line,3)='```' then do
-    parse var line '<!--'fn'-->'
-    parse var line '```'language' <!--'
-    call writeSourceFile filename fn
-    line='%includesource='fn':'language'%'
-  end
-  call lineout outfile,line
-end
-call lineout outfile /* close the file */
-return
 
 
 
