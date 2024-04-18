@@ -26,22 +26,8 @@ do i=1 to words(chapters)
   end
 end
 -- exit -- uncomment to debug the preprocessing
--- copy the charts for the latex compilation process
-'mkdir -p charts'
-'mkdir -p images'
-'cp ../../'title'.tex .'
-'cp ../../bibliography.bib .'
-'cp ../../structure.tex .'
-'cp ../../hyphenation.tex .'
-'cp ../../charts/*.pdf ./charts'
-'cp ../../images/*.pdf ./images'
-'cp ../../images/*.png ./images'
-'cp ../../images/*.PNG ./images'
-'cp ../../images/*.jpg ./images'
-'cp ../../images/*.jpeg ./images'
-'cp ../../images/*.tiff ./images'
-'cp ../../images/*.svg ./images'
-/* 'cp ../../recursion/\*.svg ./images' */
+
+call copyassets title
 
 -- build the document. at least 2 passes needed for coherence of contents and index
 xelatexrc=1
@@ -94,52 +80,4 @@ end
 call lineout fnout /* close the file */
 return
 
-preprocessTEX: procedure
-parse lower arg filename
-outfile=filename'.tex'
-filename=filename'.texin'
-call lineout outfile,'%preprocessed texin',1
-do while lines(filename)
-  line=linein(filename)
-  tbidpos=pos('\{\#tbl:id\}',line)
-  if tbidpos>0 then do
-    line=changestr('\{\#tbl:id\}',line,'')
-  end
-  ixpos=pos('\%index\%',line)
-  if ixpos>0 then line=replaceIndices(line)
-  ixpos=pos('\%indexm\%',line)
-  if ixpos>0 then line=replaceMultiIndices()
-  ixpos=pos('\%cite\%',line)
-  if ixpos>0 then line=replaceCites(line)
-  ixpos=pos('\hyperlink',line)
-  if ixpos>0 then line=replaceHyperlink(line)
-  ixpos=pos('\%includesource',line)
-  if ixpos>0 then line=includelisting(line)
-  call lineout outfile,line
-end
-call lineout outfile /* close the file */
-return
-
-
-
-
-
-/* replaceMultiIndices
- * replace a <!--index:indexable words--> tag with the indexable words
- * within a tex \index tag; here duplication is necessary
- * and the words are filtered from passing through 
- */  
-replaceMultiIndices: procedure expose line
-outline=''
-do until line=''
-  parse var line start '\%indexm\%' rest
-  parse var rest ixwords '--\textgreater' rest
-  if ixwords='' then do
-    outline=outline||start
-    leave
-  end
-  outline=outline||start||'\index{'ixwords'} '
-  line=rest
-end
-return outline
 
