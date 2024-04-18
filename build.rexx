@@ -25,7 +25,7 @@ do i=1 to words(chapters)
     call preprocessTEX(file)
   end
 end
-
+-- exit -- uncomment to debug the preprocessing
 -- copy the charts for the latex compilation process
 'mkdir -p charts'
 'mkdir -p images'
@@ -177,8 +177,8 @@ outline=''
 do until line=''
   parse var line start '\%cite\%' rest '.'
   parse var rest '{[}'ixword'{]}'
-  /* ixword=translate(ixword,'','[]{}') */
-  /* ixword=strip(ixword) */
+  ixword=translate(ixword,'','[]{}')
+  ixword=strip(ixword)
   if ixword='' then do
     outline=outline||start
     leave
@@ -186,8 +186,13 @@ do until line=''
   outline=outline||start||'\cite{'ixword'}'
   line=subword(rest,2)
 end -- do until
-if pos('footnote',outline) >0 then return outline'}'
-else return outline
+if pos('footnote',outline) >0 then
+  do
+    footnotepos = pos('footnote', outline)
+    restofsentence = substr(outline,footnotepos)
+    if countstr('}',restofsentence) < 2 then
+      outline = left(outline,footnotepos-1)||changestr('}',restofsentence,'}}')
+  end
 return outline
 
 replaceHyperlink: procedure expose line
