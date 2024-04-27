@@ -35,7 +35,7 @@ A useful trick to share fonts between your Windows and wsl2 installations: put t
 1. Install Ubuntu: `wsl --install`, then reboot and create the default user. In my case, this installed Ubuntu 22.04.3 LTS.
 2. Update wsl2: `sudo apt update`, then `sudo apt upgrade`.
 3. Download and install Regina or ooRexx (I installed ooRexx Version 5.1.0 r12834) with `sudo dpkg -i` after downloading ooRexx from SourceForge.
-4. Install Tex Live: `sudo apt install texlive-binaries`, `sudo apt install texlive-xetex`, `sudo apt install texlive-pstricks`.
+4. Install Tex Live: `sudo apt install texlive-binaries`, `sudo apt install texlive-xetex`, `sudo apt install texlive-pstricks`, `sudo apt install texlive-science`.
 5. Install Pandoc: `sudo apt install pandoc`.
 6. Download the fonts from `https://github.com/RexxLA/rexx-repository/tree/master/ARB/standards/work-in-progress/document/fonts` and install them by modifying/creating `/etc/fonts/local.conf' as described above.
 7. Run `fc-cache -f -v` to refresh the font cache.
