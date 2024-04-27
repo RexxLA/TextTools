@@ -32,7 +32,9 @@ A useful trick to share fonts between your Windows and wsl2 installations: put t
 
 ### Here is a step-by-step complete installation under WSL2 that worked for me (JMB 20240427)
 
-1. Install Ubuntu: `wsl --install`, then reboot.
+1. Install Ubuntu: `wsl --install`, then reboot and create the default user. In my case, this installed Ubuntu 22.04.3 LTS.
+2. Update wsl2: `sudo apt update`, then `sudo apt upgrade`.
+3. Download and install Regina or ooRexx.
 
 ## Tools used
 
