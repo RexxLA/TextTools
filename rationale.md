@@ -39,6 +39,7 @@ A useful trick to share fonts between your Windows and wsl2 installations: put t
 5. Install Pandoc: `sudo apt install pandoc`.
 6. Download the fonts from `https://github.com/RexxLA/rexx-repository/tree/master/ARB/standards/work-in-progress/document/fonts` and install them by modifying/creating `/etc/fonts/local.conf' as described above.
 7. Run `fc-cache -f -v` to refresh the font cache.
+8. That's it!
 
 ## Tools used
 
