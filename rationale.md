@@ -34,7 +34,8 @@ A useful trick to share fonts between your Windows and wsl2 installations: put t
 
 1. Install Ubuntu: `wsl --install`, then reboot and create the default user. In my case, this installed Ubuntu 22.04.3 LTS.
 2. Update wsl2: `sudo apt update`, then `sudo apt upgrade`.
-3. Download and install Regina or ooRexx.
+3. Download and install Regina or ooRexx (I installed ooRexx Version 5.1.0 r12834) with `sudo dpkg -i` after downloading ooRexx from SourceForge.
+4. Install Tex Live: `sudo apt install texlive-binaries`.
 
 ## Tools used
 
