@@ -30,6 +30,10 @@ A useful trick to share fonts between your Windows and wsl2 installations: put t
 </fontconfig>
 ```
 
+### Here is a step-by-step complete installation under WSL2 that worked for me (JMB 20240427)
+
+1. Install Ubuntu: `wsl --install`, then reboot.
+
 ## Tools used
 
 - rexx
