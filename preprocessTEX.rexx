@@ -19,6 +19,12 @@ do while lines(filename)
   if ixpos>0 then line=replaceHyperlink(line)
   ixpos=pos('\%includesource',line)
   if ixpos>0 then line=includelisting(line)
+  /* ixpos=pos('Rexx',line) */
+  /* if ixpos>0 then line=changestr('Rexx',line,'\\Rexx{}') */
+  /* ixpos=pos('REXX',line) */
+  /* if ixpos>0 then line=changestr('REXX',line,'\\Rexx{}') */
+  /* ixpos=pos('rexx',line) */
+  /* if ixpos>0 then line=changestr('rexx',line,'\\Rexx{}') */
   call lineout outfile,line
 end
 call lineout outfile /* close the file */
