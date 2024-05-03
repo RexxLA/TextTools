@@ -2,9 +2,9 @@
 
 ## Principles
 
-The text is in (github-) MarkDown as much as possible; online display is an important medium, but a printed book is the deliverable. 
+The text is in MarkDown (GitHub-dialect) as much as possible; online display is an important medium, but a printed book is the deliverable. 
 
-All text is in the `rexx-repository/ARB/standards/work-in-progress/document` directory and its subdirectories.
+All text for the Rexx standard is in the `rexx-repository/ARB/standards/work-in-progress/document` directory and its subdirectories.
 The end product is a pdf file in the `tex/standard` subdirectory. This subdirectory has no content in the git repository and the contents can be erased at all times.
 
 A `build.rexx` exec produces the document. It should be run from the `tex/standard` directory. You can download it and [here](https://github.com/RexxLA/TextTools).
