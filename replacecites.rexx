@@ -11,7 +11,8 @@ do until line=''
     leave
   end
   outline=outline||start||'\cite{'ixword'} '
-  line=subword(rest,2)
+  lpos=lastpos('}',rest)
+  line=substr(rest,lpos+1)
 end -- do until
 
 if pos('footnote',outline) >0 then
