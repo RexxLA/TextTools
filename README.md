@@ -1,7 +1,6 @@
 # TextTools
 
-Set of Text Tools supporting different RexxLA implementations.
-
+Set of Text Tools supporting different RexxLA publications.
 To use this in your document build process:
 
 - git submodule add 
