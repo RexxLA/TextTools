@@ -1,7 +1,20 @@
 # TextTools
 
-Set of Text Tools supporting different RexxLA publications.
+Set of Text Tools supporting different publications which use a process to build from Markdown to XeTex.
+
 To use this in your document build process:
+
+create a subdirectory tex/book into your document directory. The base directory can contain .tex and .md files.
+
+run in the tex/book subdirectory:
+
+```
+rexx ~/apps/TextTools/build.rexx
+```
+
+It is also possible to check this out as a submodule of the git repo that contains your publication.
+This way, you have more control over what works for a specific publication and can do controlled
+upgrades and rollbacks. To use as a submodule, do:
 
 - git submodule add 
 
