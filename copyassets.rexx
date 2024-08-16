@@ -2,10 +2,13 @@
 parse arg title
 'mkdir -p charts'
 'mkdir -p images'
-'cp ../../'title'.tex .'
+/* 'cp ../../'title'.tex .' */
 'cp ../../bibliography.bib .'
-'cp ../../structure.tex .'
-'cp ../../hyphenation.tex .'
+/* 'cp ../../structure.tex .' */
+/* 'cp ../../hyphenation.tex .' */
+'cp ../../*.sty .'
+'cp ../../*.bst .'
+'cp ../../*.tex .'
 'cp ../../charts/*.pdf ./charts'
 'cp ../../images/*.pdf ./images'
 'cp ../../images/*.png ./images'
