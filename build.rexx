@@ -9,6 +9,7 @@ ird = reverse(dir)
 parse var ird .'/'.'/'title'/'.
 title=reverse(title)
 say 'Publication file is' title
+
 /*
  * Every chapter is a markdown file. Precompile the changed chapters,
  * make-style
@@ -26,8 +27,8 @@ do i=1 to words(chapters)
   end
 end
 -- exit -- uncomment to debug the preprocessing
-
 call copyassets title
+
 call builddocument title
 
 'open 'title'.pdf'
