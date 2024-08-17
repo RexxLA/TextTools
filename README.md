@@ -7,7 +7,13 @@ Goals:
 - bridge a change from Latex source to Markdown source
 - enable different and future text toolchains to run on that Markdown source 
 
+## Added functionality
 This toolset add some functionality to Markdown, using a comment escape mechanism. To limit the dependencies on `pandoc`, the latter is only used for straightforward conversion.
+
+- tags for bibliography and citation
+- tags for index generation
+
+Use of Latex tags is still possible, these will pass through and will be used for print document generation; for use as online documentation this use is discouraged.
 
 ## Use
 To use this in your document build process:
