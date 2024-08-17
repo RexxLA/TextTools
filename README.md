@@ -17,10 +17,10 @@ Use of Latex tags is still valid and possible, these will pass through and will 
 
 |Tag   |Use   |Example   |   |   |
 |---|---|---|---|---|
-| `<!--index-->`  | add an index entry for next word  | `<!--index-->`  |   |   |
-|   |   |   |   |   |
+| `<!--index-->`  | add index entry for next word  | `<!--index-->`Rexx  |   |   |
+| `<--index:`word,word`>`  | add index entries with level   |   |   |   |
 | `<!--cite-->`  | use citation from `bibliogßraphy.bib`  |   |   |   |
-
+| ``` | inline source will be written to a file| ```rexx (to specify language to listings)
 Table: Comment-hidden tags. {#tbl:id}
 
 Note: {#tbl:id} signals to pandoc that this table goes into the list of tables.
