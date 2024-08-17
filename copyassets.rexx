@@ -4,11 +4,7 @@ parse arg title
 'mkdir -p images'
 /* 'cp ../../'title'.tex .' */
 'cp ../../bibliography.bib .'
-/* 'cp ../../structure.tex .' */
-/* 'cp ../../hyphenation.tex .' */
-'cp ../../*.sty .'
-'cp ../../*.bst .'
-'cp ../../*.tex .'
+'cp ../../* .'
 'cp ../../charts/*.pdf ./charts'
 'cp ../../images/*.pdf ./images'
 'cp ../../images/*.png ./images'
