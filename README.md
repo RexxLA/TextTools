@@ -13,7 +13,17 @@ This toolset add some functionality to Markdown, using a comment escape mechanis
 - tags for bibliography and citation
 - tags for index generation
 
-Use of Latex tags is still possible, these will pass through and will be used for print document generation; for use as online documentation this use is discouraged.
+Use of Latex tags is still valid and possible, these will pass through and will be used for print document generation; for use as online documentation this use is discouraged.
+
+|Tag   |Use   |Example   |   |   |
+|---|---|---|---|---|
+| `<!--index-->`  | add an index entry for next word  | `<!--index-->`  |   |   |
+|   |   |   |   |   |
+| `<!--cite-->`  | use citation from `bibliogßraphy.bib`  |   |   |   |
+
+Table: Comment-hidden tags. {#tbl:id}
+
+Note: {#tbl:id} signals to pandoc that this table goes into the list of tables.
 
 ## Use
 To use this in your document build process:
@@ -29,8 +39,9 @@ rexx ~/apps/TextTools/build.rexx
 
 ## Use as a git submodule
 It is also possible to check this out as a submodule of the git repo that contains your publication.
-This way, you have more control over what works for a specific publication and can do controlled
-upgrades and rollbacks for that publication only. To use as a submodule, do:
+This way, you have more control over what works for a specific publication and can do controlled upgrades and rollbacks for that publication only. You don't *have to* check that in, but generally when cooperation on a document that is the wa to go. 
+
+To use as a submodule, do:
 
 - git submodule add 
 
