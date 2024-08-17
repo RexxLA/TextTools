@@ -9,6 +9,7 @@ Goals:
 
 This toolset add some functionality to Markdown, using a comment escape mechanism. To limit the dependencies on `pandoc`, the latter is only used for straightforward conversion.
 
+## Use
 To use this in your document build process:
 
 create a subdirectory `tex/book` into your document directory. The base directory can contain `.tex` and `.md` files.
@@ -20,6 +21,7 @@ run in the tex/book subdirectory:
 rexx ~/apps/TextTools/build.rexx
 ```
 
+## Use as a git submodule
 It is also possible to check this out as a submodule of the git repo that contains your publication.
 This way, you have more control over what works for a specific publication and can do controlled
 upgrades and rollbacks for that publication only. To use as a submodule, do:
