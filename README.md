@@ -7,8 +7,15 @@ Goals:
 - bridge a change from Latex source to Markdown source
 - enable different and future text toolchains to run on that Markdown source 
 
+## Added functionality
 This toolset add some functionality to Markdown, using a comment escape mechanism. To limit the dependencies on `pandoc`, the latter is only used for straightforward conversion.
 
+- tags for bibliography and citation
+- tags for index generation
+
+Use of Latex tags is still possible, these will pass through and will be used for print document generation; for use as online documentation this use is discouraged.
+
+## Use
 To use this in your document build process:
 
 create a subdirectory `tex/book` into your document directory. The base directory can contain `.tex` and `.md` files.
@@ -20,6 +27,7 @@ run in the tex/book subdirectory:
 rexx ~/apps/TextTools/build.rexx
 ```
 
+## Use as a git submodule
 It is also possible to check this out as a submodule of the git repo that contains your publication.
 This way, you have more control over what works for a specific publication and can do controlled
 upgrades and rollbacks for that publication only. To use as a submodule, do:
@@ -46,4 +54,16 @@ Your head is detached. Switch to branch `main`
 Previous HEAD position was eab7367 add .gitignore to lose emacs backups
 Switched to branch 'main'
 Your branch is up to date with 'origin/main'.
+```
+## Remove a git submodule
+
+```
+# Remove the submodule entry from .git/config
+git submodule deinit -f path/to/submodule
+
+# Remove the submodule directory from the superproject's .git/modules directory
+rm -rf .git/modules/path/to/submodule
+
+# Remove the entry in .gitmodules and remove the submodule directory located at path/to/submodule
+git rm -f path/to/submodule
 ```
