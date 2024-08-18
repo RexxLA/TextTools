@@ -40,7 +40,7 @@ rexx ~/apps/TextTools/build.rexx
 
 ## Use as a git submodule
 It is also possible to check this out as a submodule of the git repo that contains your publication.
-This way, you have more control over what works for a specific publication and can do controlled upgrades and rollbacks for that publication only. You don't *have to* check that in, but generally when cooperation on a document that is the way to go. 
+This way, you have more control over what works for a specific publication and can do controlled upgrades and rollbacks for that publication only. You don't *have to* check that in, but generally when cooperating on a document that is the way to go; also, leaving concurrent work on other documents alone is a useful goal in itself. An alternative to this submodule approach is to locallt branch the TextTools directory for changes, and then testing the other documents before merging back into `main`. 
 
 To use as a submodule, do:
 
