@@ -40,7 +40,7 @@ rexx ~/apps/TextTools/build.rexx
 
 ## Use as a git submodule
 It is also possible to check this out as a submodule of the git repo that contains your publication.
-This way, you have more control over what works for a specific publication and can do controlled upgrades and rollbacks for that publication only. You don't *have to* check that in, but generally when cooperation on a document that is the wa to go. 
+This way, you have more control over what works for a specific publication and can do controlled upgrades and rollbacks for that publication only. You don't *have to* check that in, but generally when cooperation on a document that is the way to go. 
 
 To use as a submodule, do:
 
@@ -68,6 +68,8 @@ Switched to branch 'main'
 Your branch is up to date with 'origin/main'.
 ```
 ## Remove a git submodule
+
+When done with TextTools as a submodule (say, when the document is stable or in maintenance mode), the git submodule can easly be removed, in order to run the text conversion on a central version on your system. For this, follow the following recipe:
 
 ```
 # Remove the submodule entry from .git/config
