@@ -2,7 +2,7 @@
 /* normally we are in a tex/book (two level) subdir of the project */
 say 'Rexx Texttools 0.1 started'
 
-chapters = getMarkdownFilenames('../..')
+chapters = "getMarkdownFilenames"('../..')
 dir = directory()
 say 'Current working directory is' dir
 ird = reverse(dir)
@@ -18,20 +18,20 @@ do i=1 to words(chapters)
   file=word(chapters,i)
   orgfile='../../'file
   if newer(orgfile file) then do
-    call eraseFiles file
-    call preprocessMD(file'.md')
+    call "eraseFiles" file
+    call "preprocessMD"(file'.md')
     say time() 'converting' file
     'pandoc -f markdown+latex_macros -t latex --top-level-division=chapter 'file'.md -o' file'.texin'
     say time() 'preprocessing' file
-    call preprocessTEX(file)
+    call "preprocessTEX"(file)
   end
 end
 -- exit -- uncomment to debug the preprocessing
-call copyassets title
+call "copyassets" title
 
-call builddocument title
+call "builddocument" title
 
-'open 'title'.pdf'
+--'open 'title'.pdf'
 exit
 
 
