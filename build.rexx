@@ -1,6 +1,10 @@
 /* rexx build the pdf */
 /* normally we are in a tex/book (two level) subdir of the project */
-say 'Rexx Texttools 0.1 started'
+say 'Rexx Texttools 0.2 started'
+/* arg the options */
+parse arg commandline
+if wordpos(commandline,'-show') > 0 then show=1
+else show=0
 
 chapters = "getMarkdownFilenames"('../..')
 dir = directory()
@@ -31,7 +35,15 @@ call "copyassets" title
 
 call "builddocument" title
 
---'open 'title'.pdf'
+if show then
+  do
+    out=.array~new
+    address system 'uname -s' with output using (out)
+    if out~firstItem = 'Darwin' then
+      do
+	'open 'title'.pdf'
+      end
+  end
 exit
 
 
