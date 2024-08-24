@@ -1,7 +1,7 @@
 /* rexx preprocessMD: procedure */
 parse lower arg filename
 outfile=filename
- filename='../../'filename
+filename='../../'filename
 call lineout outfile,'<!--preprocessed md-->',1
 do while lines(filename)
   line=linein(filename)

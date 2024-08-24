@@ -15,5 +15,5 @@ do until line=''
   end
   outline=outline||start||'\index{'ixwords'} '
   line=rest
-end
+end -- do until
 return outline
