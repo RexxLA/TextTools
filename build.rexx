@@ -23,6 +23,7 @@ do i=1 to words(chapters)
   orgfile='../../'file
   if newer(orgfile file) then do
     call "eraseFiles" file
+--    call "joinLinesMD"(file'.md')
     call "preprocessMD"(file'.md')
     say time() 'converting' file
     'pandoc -f markdown+latex_macros -t latex --top-level-division=chapter 'file'.md -o' file'.texin'
