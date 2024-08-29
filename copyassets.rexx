@@ -2,6 +2,9 @@
 parse arg title
 'mkdir -p charts'
 'mkdir -p images'
+'mkdir -p svg'
+'mkdir -p examples'
+'mkdir -p operation'
 /* 'cp ../../'title'.tex .' */
 'cp ../../bibliography.bib .'
 'cp ../../* .'
@@ -13,4 +16,7 @@ parse arg title
 'cp ../../images/*.jpeg ./images'
 'cp ../../images/*.tiff ./images'
 'cp ../../images/*.svg ./images'
+'cp ../../svg/*.svg ./svg'
+'cp ../../examples/*.* ./examples'
+'cp ../../operation/*.* ./operation'
 /* 'cp ../../recursion/\*.svg ./images' */
