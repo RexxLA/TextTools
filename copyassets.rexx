@@ -16,6 +16,7 @@ parse arg title
 'cp ../../images/*.jpeg ./images'
 'cp ../../images/*.tiff ./images'
 'cp ../../images/*.svg ./images'
+'cp ../../images/*.gif ./images'
 'cp ../../svg/*.svg ./svg'
 'cp ../../examples/*.* ./examples'
 'cp ../../operation/*.* ./operation'
