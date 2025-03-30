@@ -2,7 +2,7 @@
 parse arg title
 xelatexrc=1
 do i=1 to 2
-  'xelatex -output-driver="xdvipdfmx -i dvipdfmx-unsafe.cfg -q -E" -shell-esc 'title'.tex'
+  'xelatex --no-pdf -shell-esc 'title'.tex'
   xelatexrc=RC
   say 'xelatex return code:' xelatexrc
   'makeindex' title
@@ -10,3 +10,5 @@ do i=1 to 2
     'bibtex8 --wolfgang' title
   say 'bibtex return code:' RC
 end
+
+'xdvipdfmx -V 1.7 -output-driver="-dALLOWPSTRANSPARENCY" -i dvipdfmx-unsafe.cfg -q -E 'title'.xdv'
