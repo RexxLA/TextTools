@@ -11,4 +11,6 @@ do i=1 to 2
   say 'bibtex return code:' RC
 end
 
-'xdvipdfmx -V 1.7 -output-driver="-dALLOWPSTRANSPARENCY" -i dvipdfmx-unsafe.cfg -q -E 'title'.xdv'
+/* 'xdvipdfmx -V 1.7 -output-driver="-dALLOWPSTRANSPARENCY" -i dvipdfmx-unsafe.cfg -q -E 'title'.xdv' */
+
+'xdvipdfmx -V 1.7 perfbook.xdv'
