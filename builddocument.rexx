@@ -13,4 +13,4 @@ end
 
 /* 'xdvipdfmx -V 1.7 -output-driver="-dALLOWPSTRANSPARENCY" -i dvipdfmx-unsafe.cfg -q -E 'title'.xdv' */
 
-'xdvipdfmx -V 1.7 perfbook.xdv'
+'xdvipdfmx -V 1.7 'title'.xdv'
