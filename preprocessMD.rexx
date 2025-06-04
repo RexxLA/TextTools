@@ -14,6 +14,10 @@ do while lines(filename)
     call writeSourceFile filename fn
     line='%includesource='fn':'language'%'
   end
+  if left(line,10)='<!--splice' then do
+    parse var line '<!--splice--'program'-->'
+    line = '%splice%'program
+  end
   call lineout outfile,line
 end
 call lineout outfile /* close the file */

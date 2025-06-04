@@ -19,6 +19,9 @@ do while lines(filename)
   if ixpos>0 then line=replaceHyperlink(line)
   ixpos=pos('\%includesource',line)
   if ixpos>0 then line=includelisting(line)
+  ixpos=pos('\%splice\%',line)
+  if ixpos>0 then line=replaceSplice(line)
+
   /* ixpos=pos('Rexx',line) */
   /* if ixpos>0 then line=changestr('Rexx',line,'\\Rexx{}') */
   /* ixpos=pos('REXX',line) */
