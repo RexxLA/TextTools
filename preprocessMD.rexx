@@ -11,8 +11,13 @@ do while lines(filename)
   if left(line,3)='```' then do
     parse var line '<!--'fn'-->'
     parse var line '```'language' <!--'
-    call writeSourceFile filename fn
+    /* if fn = '' then do */
+      
+    /* end */
+    do
+      call writeSourceFile filename fn
     line='%includesource='fn':'language'%'
+  end
   end
   if left(line,10)='<!--splice' then do
     parse var line '<!--splice--'program'-->'
