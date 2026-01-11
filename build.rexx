@@ -3,9 +3,21 @@
 say 'Rexx Texttools 0.2 started'
 /* arg the options */
 parse arg commandline
-if wordpos(commandline,'-show') > 0 then show=1
-else show=0
 
+if wordpos('-show',commandline) > 0 then do
+  show=1
+end
+else do
+  show=0
+end
+
+if wordpos('-copy',commandline) > 0 then do
+  copy=1
+end
+else do
+  copy=0
+end
+  
 chapters = "getMarkdownFilenames"('../..')
 dir = directory()
 say 'Current working directory is' dir
@@ -35,6 +47,15 @@ end
 call "copyassets" title
 
 call "builddocument" title
+
+if copy then
+  do
+    copylocation=value("CLOUDDRIVE",, "ENVIRONMENT")
+    say 'copy location is:' copylocation
+    'cp 'title'.pdf' copylocation''
+    say 'copied'
+  end
+
 
 if show then
   do
