@@ -17,7 +17,14 @@ end
 else do
   copy=0
 end
-  
+
+if wordpos('-crexx',commandline) > 0 then do
+  crexx=1
+end
+else do
+  crexx=0
+end
+
 chapters = "getMarkdownFilenames"('../..')
 dir = directory()
 say 'Current working directory is' dir
@@ -55,6 +62,13 @@ if copy then
     'cp 'title'.pdf' copylocation''
     say 'copied'
   end
+
+if crexx then
+  do
+    say 'copy location is:' copylocation
+    'scp 'title'.pdf' netrexx@netrexx.org:/files/crexx/docs''
+    say 'copied'
+end
 
 
 if show then
