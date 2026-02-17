@@ -66,7 +66,7 @@ if copy then
 if crexx then
   do
     say 'copy location is:' copylocation
-    'scp 'title'.pdf' netrexx@netrexx.org:/files/crexx/docs''
+    'scp 'title'.pdf' 'netrexx@rexxla.org:files/crexx/docs'
     say 'copied'
 end
 
