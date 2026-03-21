@@ -32,6 +32,7 @@ say 'Publication file is' title
  */
 do i=1 to words(chapters)
   file=word(chapters,i)
+  say "===>" file "<==="
   orgfile='../../'file
   if newer(orgfile file) then do
     call "eraseFiles" file
