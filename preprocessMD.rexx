@@ -11,9 +11,9 @@ do while lines(filename)
   if left(line,3)='```' then do
     parse var line '<!--'fn'-->'
     parse var line '```'language' <!--'
-    /* if fn = '' then do */
-      
-    /* end */
+    if language = '' then parse var line '```'language'.'
+    if fn = '' then fn=translate('file'date('L'),'',':')
+    if language = '' then language='bash'
     do
       call writeSourceFile filename fn
     line='%includesource='fn':'language'%'
