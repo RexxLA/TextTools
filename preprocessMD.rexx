@@ -12,7 +12,7 @@ do while lines(filename)
     parse var line '<!--'fn'-->'
     parse var line '```'language' <!--'
     if language = '' then parse var line '```'language'.'
-    if fn = '' then fn=translate('file'date('L'),'',':')
+    if fn = '' then fn=space(translate('file'time('L'),'',':'))
     if language = '' then language='bash'
     do
       call writeSourceFile filename fn
