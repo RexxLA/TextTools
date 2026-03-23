@@ -23,6 +23,11 @@ do while lines(filename)
     parse var line '<!--splice--'program'-->'
     line = '%splice%'program
   end
+  if left(line,11)='<!--listasm' then do
+    parse var line '<!--listasm--'program'-->'
+    line = '%listasm%'program
+  end
+  
   call lineout outfile,line
 end
 call lineout outfile /* close the file */
