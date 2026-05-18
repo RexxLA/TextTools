@@ -15,7 +15,7 @@ do while lines(filename)
     if fn = '' then fn=space(translate('file'time('L'),'',':'))
     if language = '' then language='bash'
     do
-      call writeSourceFile filename fn
+      call "writeSourceFile" filename fn
     line='%includesource='fn':'language'%'
   end
   end
