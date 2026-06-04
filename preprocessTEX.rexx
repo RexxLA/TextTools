@@ -23,13 +23,19 @@ do while lines(filename)
   if ixpos>0 then line="includeasm"(line)
   ixpos=pos('\%splice\%',line)
   if ixpos>0 then line="replaceSplice"(line)
+  do while wordpos("Rexx", line) > 0
+    p = wordpos("Rexx", line)
+    line = subword(line,1,p-1) "\rexx{}" subword(line,p+1)
+  end
+  do while wordpos("Rexx-", line) > 0
+    p = wordpos("Rexx-", line)
+    line = subword(line,1,p-1) "\rexx{}-" subword(line,p+1)
+  end
 
-  /* ixpos=pos('Rexx',line) */
-  /* if ixpos>0 then line=changestr('Rexx',line,'\\Rexx{}') */
-  /* ixpos=pos('REXX',line) */
-  /* if ixpos>0 then line=changestr('REXX',line,'\\Rexx{}') */
-  /* ixpos=pos('rexx',line) */
-  /* if ixpos>0 then line=changestr('rexx',line,'\\Rexx{}') */
+  do while wordpos("cRexx", line) > 0
+    p = wordpos("cRexx", line)
+    line = subword(line,1,p-1) "\crexx{}" subword(line,p+1)
+  end
   call lineout outfile,line
 end
 call lineout outfile /* close the file */
