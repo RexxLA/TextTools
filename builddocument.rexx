@@ -7,8 +7,8 @@ do i=1 to 2
   say 'xelatex return code:' xelatexrc
   'makeindex' title
   say 'makeindex return code:' RC
-    -- 'bibtex8 --wolfgang' title
-    biber title
+  -- 'bibtex8 --wolfgang' title
+  'biber' title
   say 'bibtex return code:' RC
 end
 
