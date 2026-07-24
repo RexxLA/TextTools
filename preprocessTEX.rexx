@@ -36,6 +36,19 @@ do while lines(filename)
     p = wordpos("cRexx", line)
     line = subword(line,1,p-1) "\crexx{}" subword(line,p+1)
   end
+    do while wordpos("cRexx-", line) > 0
+    p = wordpos("cRexx-", line)
+    line = subword(line,1,p-1) "\crexx{}" subword(line,p+1)
+  end
+  do while wordpos("cREXX", line) > 0
+    p = wordpos("cREXX", line)
+    line = subword(line,1,p-1) "\crexx{}" subword(line,p+1)
+  end
+  do while wordpos("cREXX-", line) > 0
+    p = wordpos("cREXX-", line)
+    line = subword(line,1,p-1) "\crexx{}" subword(line,p+1)
+  end
+
   call lineout outfile,line
 end
 call lineout outfile /* close the file */
