@@ -19,11 +19,7 @@ do while lines(filename)
     line='%includesource='fn':'language'%'
   end
   end
-  if left(line,13)='<!--ntsplice' then do
-    parse var line '<!--ntsplice--'program'-->'
-    line = '%ntsplice%'program
-  end
-    if left(line,10)='<!--splice' then do
+  if left(line,10)='<!--splice' then do
     parse var line '<!--splice--'program'-->'
     line = '%splice%'program
   end
