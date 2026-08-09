@@ -23,6 +23,9 @@ do while lines(filename)
   if ixpos>0 then line="includeasm"(line)
   ixpos=pos('\%splice\%',line)
   if ixpos>0 then line="replaceSplice"(line)
+  ixpos=pos('\%ntsplice\%',line)
+  if ixpos>0 then line="replaceSpliceNoTerminal"(line)
+
   do while wordpos("Rexx", line) > 0
     p = wordpos("Rexx", line)
     line = subword(line,1,p-1) "\rexx{}" subword(line,p+1)

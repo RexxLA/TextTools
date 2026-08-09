@@ -1,0 +1,6 @@
+/* replaceSplice: procedure */
+arg line
+outline=''
+parse lower var line '\%splice\%'program
+outline='\fontspec{IBM Plex Mono}[Scale=0.7] \obeylines \obeyspaces \parskip=0pt \parindent=0pt \splice{stdbuf -o0 'program'}'
+return outline
